@@ -7,6 +7,7 @@ Meta Musical Memes workplace
 ## Useful links
 1. Getting the dataset: http://labrosa.ee.columbia.edu/millionsong/pages/getting-dataset
 2. Loading HDF5 data into RDDs: https://hdfgroup.org/wp/2015/03/from-hdf5-datasets-to-apache-spark-rdds/
+3. MSD sample code: https://github.com/tbertinmahieux/MSongsDB
 
 ## TODO:
 1. Get up and running with: https://gist.github.com/pbugnion/ea2797393033b54674af
