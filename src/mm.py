@@ -138,7 +138,7 @@ class metaMusic:
 
         if autoRun:
             self.ETL_in_Spark()
-            self.loadDatabases()
+            self.loadHDF5()
                 
     #==============================================================================================================#
     
