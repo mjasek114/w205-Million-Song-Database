@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #yum -y update
+yum -y install h5py
 yum -y install R
 yum -y install r-studio
 wget https://download2.rstudio.org/rstudio-server-rhel-0.99.489-x86_64.rpm
