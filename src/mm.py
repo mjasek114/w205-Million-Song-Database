@@ -122,7 +122,7 @@ def nodeToDict(bucketKey, verbose = True, refresh=False):
     if bucketKey.name in downloadedFiles:
         print 'We seem to already have the file ', bucketKey.name, '. Verifying size'
         
-        localFileSize = os.path.getsize(os.path.join(bucketKey.LocalStorePath, bucketKey.name))
+        localFileSize = os.path.getsize(os.path.join(bucketKey.localStorePath, bucketKey.name))
 
         if (bucketKey.size == localFileSize) and (refresh==False):
             print 'Skipping download--going straight to processing'
