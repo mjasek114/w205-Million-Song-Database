@@ -95,7 +95,7 @@ def putS3File(localPath, bucketName):
 
 #==============================================================================================================#
 
-def nodeToDict(bucketKey, verbose = True):
+def nodeToDict(bucketKey, verbose = True, refresh=False):
     '''
     This function is intended for use in a parallel processing map.
     Inputs a bucket key, downloads the data, and extracts some important info 
@@ -107,6 +107,8 @@ def nodeToDict(bucketKey, verbose = True):
     in the key object.   Implementing this way enables parallel processing.
     '''
     import h5py
+    import os
+    import os.path
 
     if not hasattr(bucketKey, 'localStorePath'):
         bucketKey.localStorePath = '~'
@@ -114,19 +116,30 @@ def nodeToDict(bucketKey, verbose = True):
     songInfo = []
     
     
-    try:
+    # don't reprocess files
+    downloadedFiles = os.listdir(bucketKey.localStorePath)
+        
+    if bucketKey.name in downloadedFiles:
+        print 'We seem to already have the file ', bucketKey.name, '. Verifying size'
+        
+        localFileSize = os.path.getsize(os.path.join(bucketKey.LocalStorePath, bucketKey.name))
+
+        if (bucketKey.size == localFileSize) and (refresh==False):
+            print 'Skipping download--going straight to processing'
+            
+        else:
     
-        if verbose:
-            print 'Fetching data file ', bucketKey, ' from bucket ', bucketKey.bucket, '.  Size: ', bucketKey.size
-            getS3File(bucketKey, bucketKey.localStorePath)
-    except:
-        print 'Error fetching file ', bucketKey
-        return []
+            try:
+                if verbose:
+                    print 'Fetching data file ', bucketKey, ' from bucket ', bucketKey.bucket, '.  Size: ', bucketKey.size
+                getS3File(bucketKey, bucketKey.localStorePath)
+            except:
+                print 'Error fetching file ', bucketKey
+                return []
         
     try:    
         if verbose:
-            print 'Processing ', bucketKey, ' --storing in ', bucketKey.localStorePath
-
+            print 'Processing ', bucketKey
         
         thisH5File = h5py.File(os.path.join(bucketKey.localStorePath,bucketKey.name))
         thisBlockSongList = thisH5File['songs']
@@ -232,7 +245,7 @@ class metaMusic:
 
     #==============================================================================================================#
  
-    def parallelExtractHDF5(self, bucketName = 'w205-msd', testMode = False):
+    def parallelExtractHDF5(self, bucketName = 'w205-msd', testMode = False, refresh = False):
         '''
         Fetches all files in bucketName and extracts the data of interest
         from them using the nodeToDict function.  Returns results and
@@ -251,8 +264,10 @@ class metaMusic:
 
         bucketKeys = listS3Files(bucketName)
         
+        
         for thisKey in bucketKeys:
             thisKey.localStorePath = self.mssRoot
+
             
 
 
@@ -403,18 +418,25 @@ class metaMusic:
     
 def main():
     from optparse import OptionParser
-        
-    options,arguments = OptionParser.parse()    
+
+    parser = OptionParser()
+    parser.add_option("-q", "--quiet",
+                      action="store_false", dest="verbose", default=True,
+                      help="don't print status messages to stdout")
+
+    parser.add_option("-t", "--test", action = "store", dest = "testMode", default=False)    
     
-    if arguments:
-        bucketName = arguments
+    (options, args) = parser.parse_args()
+    
+    if args:
+        bucketName = args[0]
     else:
         bucketName = 'w205-msd'
     
     m = metaMusic()
     
-    m.parallelExtractHDF5(bucketName=bucketName)
-    m.transformHDF5()
+    m.parallelExtractHDF5(bucketName=bucketName,verbose = options.verbose, testMode =options.testMode)
+    m.transformHDF5(verbose = options.verbose)
     
     # 
 
