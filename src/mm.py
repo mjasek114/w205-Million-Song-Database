@@ -433,10 +433,10 @@ def main():
     else:
         bucketName = 'w205-msd'
     
-    m = metaMusic()
-    
-    m.parallelExtractHDF5(bucketName=bucketName,verbose = options.verbose, testMode =options.testMode)
-    m.transformHDF5(verbose = options.verbose)
+    m = metaMusic(verbose = options.verbose)
+
+    m.parallelExtractHDF5(bucketName=bucketName,testMode =options.testMode)
+    m.transformHDF5(bucketName = 'w205-mmm')
     
     # 
 
