@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #yum -y update
+yum -y install h5py
 yum -y install R
 yum -y install r-studio
 wget https://download2.rstudio.org/rstudio-server-rhel-0.99.489-x86_64.rpm
@@ -25,6 +26,6 @@ sudo -u metamusic wget https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39
 sudo -u metamusic bash Anaconda2-2.4.0-Linux-x86_64.sh -b  #-b is batch mode-->no user interaction required
 
 # Install the mysql interface inside Anaconda
-sudo -u metamusic /home/metamusic/anaconda2/bin/conda install mysql-python
+sudo -u metamusic /home/metamusic/anaconda2/bin/conda install -y mysql-python
 #sys.path.append('/data/W205_Final/w205project/src/')
 
