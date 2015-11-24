@@ -6,6 +6,8 @@ yum -y install R
 yum -y install r-studio
 wget https://download2.rstudio.org/rstudio-server-rhel-0.99.489-x86_64.rpm
 yum -y install --nogpgcheck rstudio-server-rhel-0.99.489-x86_64.rpm
+sudo rstudio-server stop
+sudo rstudio-server start
 yum -y install mysql
 yum -y install mysql-server
 yum -y install xauth*  #enables ssh-based X11 forwarding for gui apps
