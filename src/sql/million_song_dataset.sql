@@ -55,4 +55,5 @@ CREATE EXTERNAL TABLE msd (
 )
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
-LOCATION 's3://w205-mmm/million_song_dataset';
+LOCATION 's3://w205-mmm/million_song_dataset'
+tblproperties ("skip.header.line.count"="1");
