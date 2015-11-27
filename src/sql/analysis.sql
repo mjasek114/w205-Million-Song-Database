@@ -22,16 +22,16 @@ ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 STORED AS TEXTFILE
 LOCATION 's3://w205-mmm/merged';
 
-INSERT INTO merged 
+INSERT INTO TABLE merged 
 SELECT 
-	m.artist,
+	m.artist_name,
 	m.title,
 	a.Name AS writer,
 	m.year,
 	b.Peak,
 	b.Year AS billboardYear,
-	m.artist_hotttness,
-	m.song_hotttness,
+	m.artist_hotttnesss,
+	m.song_hotttnesss,
 	m.danceability,
 	k.Name AS key,
 	m.tempo,
@@ -43,6 +43,6 @@ LEFT JOIN ascap a
 	ON a.Title = m.title
 LEFT JOIN billboard b
 	ON b.Title = m.title
-	AND b.artist = m.artist
+	AND b.artist = m.artist_name
 LEFT JOIN key k
 	ON k.id = m.key;
