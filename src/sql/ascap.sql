@@ -1,4 +1,4 @@
-CREATE EXTERNAL TABLE ascap_staging (
+CREATE EXTERNAL TABLE ascap (
 	Title STRING,
 	RoleType STRING,
 	Name STRING,
@@ -10,20 +10,21 @@ FIELDS TERMINATED BY ','
 LOCATION 's3://w205-mmm/ascap'
 tblproperties ("skip.header.line.count"="1");
 
-CREATE TABLE ascap (
+CREATE TABLE ascap_writers (
 	Title STRING,
-	RoleType STRING,
 	Name STRING,
 	Shares INT,
 	Note STRING
 	)
 STORED AS ORC;
 
-INSERT INTO ascap (Title, RoleType, Name, Shares, Note)
+INSERT INTO ascap_writers (
+	Title, RoleType, Name, Shares, Note
+	)
 SELECT 
 	Title, 
-	RoleType,
 	regexp_replace(Name, '(\\w+)\\s(.+)', '$2 $1'),
 	Shares,
 	Note
-FROM ascap_staging;
+FROM ascap
+WHERE RoleType = 'W';

@@ -1,3 +1,7 @@
+-- Using strings for all fields b/c output is a CSV.
+-- I'm not sure there's much value in worrying about
+-- types up to this point if type info is being 
+-- discarded.
 CREATE EXTERNAL TABLE msd (
 	mode_confidence STRING,
 	idx_tatums_start STRING,
