@@ -3,7 +3,7 @@ CREATE TABLE key (
 	name STRING
 );
 
-INSERT INTO key (id, name)
+INSERT INTO TABLE key
 VALUES
 	(0, 'c'), 
 	(1, 'c-sharp'), 
@@ -16,4 +16,4 @@ VALUES
 	(8, 'a-flat'), 
 	(9, 'a'), 
 	(10, 'b-flat'), 
-	(11, 'b')
+	(11, 'b');
