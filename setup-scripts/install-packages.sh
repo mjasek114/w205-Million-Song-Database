@@ -37,3 +37,4 @@ R -e "install.packages('shiny', repos='http://cran.rstudio.com/')"
 R -e "library(shiny)"
 wget https://download3.rstudio.org/centos5.9/x86_64/shiny-server-1.4.0.718-rh5-x86_64.rpm
 yum install -y --nogpgcheck shiny-server-1.4.0.718-rh5-x86_64.rpm
+mv /srv/shiny-server/index.html /srv/shiny-server/index.html~
