@@ -31,3 +31,9 @@ sudo -u metamusic bash Anaconda2-2.4.0-Linux-x86_64.sh -b  #-b is batch mode-->n
 sudo -u metamusic /home/metamusic/anaconda2/bin/conda install -y mysql-python
 #sys.path.append('/data/W205_Final/w205project/src/')
 
+# Install Shiny Server
+# After you install Shiny Server, the shiny-server process will be started
+R -e "install.packages('shiny', repos='http://cran.rstudio.com/')"
+R -e "library(shiny)"
+wget https://download3.rstudio.org/centos5.9/x86_64/shiny-server-1.4.0.718-rh5-x86_64.rpm
+yum install -y --nogpgcheck shiny-server-1.4.0.718-rh5-x86_64.rpm
