@@ -17,12 +17,10 @@ CREATE TABLE billboard (
 	)
 STORED AS ORC;
 
-INSERT INTO billboard (
-	Artist, Title, High, Peak)
+INSERT OVERWRITE TABLE billboard
 SELECT 
-	regexp_replace(Artist, "\"(\\w+), The\"", "The $1"),
+	regexp_replace(Artist, '"(\\w+), The"', 'The $1'),
 	Title,
-	High,
+	Peak,
 	Year
-	)
 FROM billboard_staging;
