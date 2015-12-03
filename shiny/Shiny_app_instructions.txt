@@ -1,0 +1,18 @@
+Instructions for deploying a Shiny app
+
+1.  Create an R Script file.  Call it app.R.
+Start with a Shiny template.  You can add any R code you want
+before the Shiny part starts if you need to load data or create
+models or whatever.  (You can also split app.R into
+ui.R and server.R, but I'm keeping it simple.)
+
+2.  After you run our project install script which installs
+Shiny Server, then create the directory
+/srv/shiny-server/<your app dir>
+
+3.  Then put your app.R that you created in step 1 in this new
+folder.
+
+4.  Then run http://<your amazon instance>:3838.  Your new
+folder name should show up in the list and when you click on it
+your app.R file should run.
