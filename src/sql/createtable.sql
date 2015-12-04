@@ -1,16 +1,18 @@
+USE Songs
+
 CREATE TABLE Song (
 	artist VARCHAR(256),
 	title VARCHAR(1024),
 	writer VARCHAR(256),
-	year INT,
+	songYear INT,
 	peakPosition INT,
 	billboardYear INT,
 	artistHotttness FLOAT,
 	songHotttness FLOAT,
 	danceability FLOAT,
-	key VARCHAR(10),
+	songKey VARCHAR(10),
 	tempo FLOAT,
 	duration FLOAT,
 	loudness FLOAT,
 	timeSignature INT
-)
+);
