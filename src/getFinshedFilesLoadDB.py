@@ -103,8 +103,39 @@ def loadDB(resultsRoot, verbose = True):
     # Send data to database--replace data if it already exists
     MSSdf.to_sql("MSS", con= dbConnection, flavor = 'mysql', if_exists = 'replace',dtype=typ)
     dbConnection.close()
+
+#=============================================================================#    
+
+def writeHeaderFile(pathToFiles):
     
+    fileName = 'headers.txt'
+
+    oFile = open(os.path.join(pathToFiles,fileName),'w')
+    headerContents = '"artist","title","writer","year","peakPosition ","billboardYear ","artistHotttness","songHotttness","danceability","key","tempo","duration","loudness","timeSignature"'
+    headerContents += "\n"
+    oFile.write(headerContents)
+    oFile.close()
     
+#=============================================================================#    
+def schemaSQL():
+
+    schemaString =  '''CREATE TABLE Song (
+	artist VARCHAR(256),
+	title VARCHAR(1024),
+	writer VARCHAR(256),
+	year INT,
+	peakPosition INT,
+	billboardYear INT,
+	artistHotttness FLOAT,
+	songHotttness FLOAT,
+	danceability FLOAT,
+	key VARCHAR(10),
+	tempo FLOAT,
+	duration FLOAT,
+	loudness FLOAT,
+	timeSignature INT
+)'''
+    return schemaString
 #=============================================================================#    
 
 def main():
