@@ -14,6 +14,9 @@ yum -y install xauth*  #enables ssh-based X11 forwarding for gui apps
 yum -y install java-1.7.0-openjdk java-1.7.0-openjdk-devel #necessary for getting hive stuff to start:
 service mysqld start
 
+# AWS CLI Tools
+pip install awscli
+
 # Adjust environment variables
 export SPARK_HOME=/home/dan/spark15
 
