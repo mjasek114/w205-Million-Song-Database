@@ -37,6 +37,9 @@ sudo -u metamusic /home/metamusic/anaconda2/bin/conda install -y mysql-python
 
 # Install Shiny Server
 # After you install Shiny Server, the shiny-server process will be started
+R -e "install.packages('DBI', repos='http://cran.rstudio.com/')"
+R -e "install.packages('RMySQL', repos='http://cran.rstudio.com/')"
+R -e "install.packages('ggplot2', repos='http://cran.rstudio.com/')"
 R -e "install.packages('shiny', repos='http://cran.rstudio.com/')"
 R -e "library(shiny)"
 wget https://download3.rstudio.org/centos5.9/x86_64/shiny-server-1.4.0.718-rh5-x86_64.rpm
