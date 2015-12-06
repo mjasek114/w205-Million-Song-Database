@@ -10,6 +10,7 @@ sudo rstudio-server stop
 sudo rstudio-server start
 yum -y install mysql
 yum -y install mysql-server
+yum -y install mysql-devel
 yum -y install xauth*  #enables ssh-based X11 forwarding for gui apps
 yum -y install java-1.7.0-openjdk java-1.7.0-openjdk-devel #necessary for getting hive stuff to start:
 service mysqld start
