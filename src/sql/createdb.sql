@@ -1,1 +1,1 @@
-CREATE DATABASE Songs;
+CREATE DATABASE metamusic;

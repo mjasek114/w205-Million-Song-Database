@@ -1,6 +1,6 @@
-USE Songs
+USE metamusic
 
-CREATE TABLE Song (
+CREATE TABLE song (
 	artist VARCHAR(256),
 	title VARCHAR(1024),
 	writer VARCHAR(256),

@@ -1,7 +1,7 @@
-USE Songs
+USE metamusic
 
 LOAD DATA LOCAL INFILE '/tmp/Song.csv'
-INTO TABLE Song
+INTO TABLE song
 FIELDS 
   TERMINATED BY ','
   OPTIONALLY ENCLOSED BY '"'
