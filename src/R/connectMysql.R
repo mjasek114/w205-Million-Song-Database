@@ -7,7 +7,7 @@ library(RMySQL)
 drv = dbDriver("MySQL")
 
 #create a connectino to the database
-con = dbConnect(drv, user="metamusic", password="", dbname="songs", host="localhost")
+con = dbConnect(drv, user="metamusic", password="", dbname="metamusic", host="localhost")
 
 # list tables or fields
 dbListTables(con)
