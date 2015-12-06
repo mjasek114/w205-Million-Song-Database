@@ -5,7 +5,7 @@ library(RMySQL)
 library(ggplot2)
 
 drv = dbDriver("MySQL")
-db = dbConnect(drv, dbname="metamusic", host="localhost")
+db = dbConnect(drv, user="metamusic", password="m00zikz!", dbname="metamusic", host="localhost")
 
 ui <- fluidPage(
    "Keys for artist",
