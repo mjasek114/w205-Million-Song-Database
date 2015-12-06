@@ -5,5 +5,4 @@ cat /tmp/songs/* > /tmp/Song.csv
 
 mysql < ./createdb.sql
 mysql < ./createtable.sql
-
-mysqlimport Songs /tmp/Song.csv
+mysql < ./loaddata.sql
