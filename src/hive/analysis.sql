@@ -22,7 +22,7 @@ ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 STORED AS TEXTFILE
 LOCATION 's3://w205-mmm/merged';
 
-INSERT INTO TABLE merged 
+INSERT OVERWRITE TABLE merged 
 SELECT 
 	CASE WHEN m.artist_name = '' OR m.artist_name = 'NA' THEN NULL ELSE m.artist_name END,
 	CASE WHEN m.title = '' OR m.title = 'NA' THEN NULL ELSE m.title END,
