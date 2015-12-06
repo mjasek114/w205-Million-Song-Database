@@ -24,20 +24,20 @@ LOCATION 's3://w205-mmm/merged';
 
 INSERT INTO TABLE merged 
 SELECT 
-	m.artist_name,
-	m.title,
-	a.Name AS writer,
-	m.year,
-	b.Peak,
-	b.Year AS billboardYear,
-	m.artist_hotttnesss,
-	m.song_hotttnesss,
-	m.danceability,
-	k.Name AS key,
-	m.tempo,
-	m.duration,
-	m.loudness,
-	m.time_signature
+	CASE WHEN m.artist_name = '' OR m.artist_name = 'NA' THEN NULL ELSE m.artist_name END,
+	CASE WHEN m.title = '' OR m.title = 'NA' THEN NULL ELSE m.title END,
+	CASE WHEN a.Name = '' OR a.Name = 'NA' THEN NULL ELSE a.Name END AS writer,
+	CASE WHEN m.year = '' OR m.year = 'NA' THEN NULL ELSE m.year END,
+	CASE WHEN b.Peak = '' OR b.Peak = 'NA' THEN NULL ELSE b.Peak END,
+	CASE WHEN b.Year = '' OR b.Year = 'NA' THEN NULL ELSE b.Year END AS billboardYear,
+	CASE WHEN m.artist_hotttnesss = '' OR m.artist_hotttnesss = 'NA' THEN NULL ELSE m.artist_hotttnesss END,
+	CASE WHEN m.song_hotttnesss = '' OR m.song_hotttnesss = 'NA' THEN NULL ELSE m.song_hotttnesss END,
+	CASE WHEN m.danceability = '' OR m.danceability = 'NA' THEN NULL ELSE m.danceability END,
+	CASE WHEN k.Name = '' OR k.Name = 'NA' THEN NULL ELSE k.Name END AS key,
+	CASE WHEN m.tempo = '' OR m.tempo = 'NA' THEN NULL ELSE m.tempo END,
+	CASE WHEN m.duration = '' OR m.duration = 'NA' THEN NULL ELSE m.duration END,
+	CASE WHEN m.loudness = '' OR m.loudness = 'NA' THEN NULL ELSE m.loudness END,
+	CASE WHEN m.time_signature = '' OR m.time_signature = 'NA' THEN NULL ELSE m.time_signature END
 FROM msd m
 LEFT JOIN ascap a
 	ON a.Title = m.title
