@@ -5,7 +5,7 @@ library(RMySQL)
 library(ggplot2)
 
 drv = dbDriver("MySQL")
-db = dbConnect(drv, user="metamusic", password="m00zikz!", dbname="metamusic", host="localhost")
+db = dbConnect(drv, user="metamusic", password="m00zikz!", dbname="metamusic", host="ec2-52-90-191-184.compute-1.amazonaws.com")
 
 
 
