@@ -7,30 +7,40 @@ library(ggplot2)
 drv = dbDriver("MySQL")
 db = dbConnect(drv, user="metamusic", password="m00zikz!", dbname="metamusic", host="localhost")
 
+
+
 ui <- fluidPage(
-   "Keys for artist",
    textInput(inputId = "artist",
    			label="Artist Name:",
    			value="Vanilla Ice"),
-   textOutput("artist"),
-   textOutput("query"),
-   plotOutput("plot")
+   plotOutput("keys"),
+   plotOutput("danceability")
 )
 
 server <- function(input, output) {
-        output$query <- renderText({
-                paste("SELECT songKey FROM song WHERE artist = '", input$artist, "'", sep="")
-	})
-        output$plot <- renderPlot({
-		query <- paste("SELECT songKey FROM song WHERE artist = '", input$artist, "'", sep="")
-		rs <- dbSendQuery(db, query)
-		df <- fetch(rs, n=-1)
-                if(nrow(df) == 0) return()
-		p <- ggplot(data=df, aes(songKey), environment=environment()) 
-                p <- p + geom_histogram(aes(y=..count..))
+  data = reactive({
+    query <- paste("SELECT songKey, danceability, tempo, duration, loudness, timeSignature FROM song WHERE artist = '", input$artist, "'", sep="")
+    rs <- dbSendQuery(db, query)
+    fetch(rs, n=-1)
+    })
+
+  output$keys <- renderPlot({
+    if(nrow(data()) == 0) return()
+		
+    p <- ggplot(data=data(), aes(songKey), environment=environment()) +
+      + geom_histogram(aes(y=..count..))
+      + ggtitle("Distribution of song keys")
 		print(p)
-                })
-        output$artist = renderText({input$artist})
+    })
+
+  output$danceability <- renderPlot({
+    if(nrow(data()) == 0) return()
+    
+    p <- ggplot(data=data(), aes(danceability), environment=environment()) +
+      + geom_histogram(aes(y=..count..))
+      + ggtitle("Distribution of song danceability")
+    print(p)
+    })
 }
 
 shinyApp(ui = ui, server = server)
