@@ -28,8 +28,8 @@ server <- function(input, output) {
     if(nrow(data()) == 0) return()
 		
     p <- ggplot(data=data(), aes(songKey), environment=environment()) +
-      + geom_histogram(aes(y=..count..))
-      + ggtitle("Distribution of song keys")
+      geom_histogram(aes(y=..count..)) +
+      ggtitle("Distribution of song keys")
 		print(p)
     })
 
@@ -37,8 +37,8 @@ server <- function(input, output) {
     if(nrow(data()) == 0) return()
     
     p <- ggplot(data=data(), aes(danceability), environment=environment()) +
-      + geom_histogram(aes(y=..count..))
-      + ggtitle("Distribution of song danceability")
+      geom_histogram(aes(y=..count..)) +
+      ggtitle("Distribution of song danceability")
     print(p)
     })
 }
