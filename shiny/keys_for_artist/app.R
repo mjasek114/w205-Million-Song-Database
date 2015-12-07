@@ -16,13 +16,11 @@ ui <- fluidPage(
 )
 
 server <- function(input, output) {
-	data <- reactive({
+	output$plot <- renderPlot(
 		query <- paste("SELECT songKey FROM song WHERE artist = '", input$artist, "'")
 		rs <- dbSendQuery(db, query)
-		fetch(rs, n=-1)
-		})
-	output$plot <- renderPlot(
-		ggplot(data(), aes(songKey)) + geom_histogram(aes(y=..count..))
+		df <- fetch(rs, n=-1)
+		ggplot(data=df, aes(songKey)) + geom_histogram(aes(y=..count..))
 		)
 }
 
