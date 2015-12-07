@@ -1,3 +1,5 @@
+#!/bin/bash
+
 mkdir /tmp/songs
 aws s3 sync s3://w205-mmm/merged /tmp/songs
 
