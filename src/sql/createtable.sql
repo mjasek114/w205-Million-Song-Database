@@ -16,5 +16,5 @@ CREATE TABLE song (
 	loudness FLOAT,
 	timeSignature INT,
 	energy FLOAT,
-	mode STRING
+	mode VARCHAR(10)
 );
