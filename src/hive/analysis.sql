@@ -41,7 +41,9 @@ SELECT
 	CASE WHEN m.loudness = '' OR m.loudness = 'NA' THEN NULL ELSE m.loudness END,
 	CASE WHEN m.time_signature = '' OR m.time_signature = 'NA' THEN NULL ELSE m.time_signature END
 	CASE WHEN m.energy = '' OR m.energy = 'NA' THEN NULL ELSE m.energy END
-	CASE WHEN m.mode = '' OR m.mode = 'NA' THEN NULL ELSE m.mode END
+	CASE WHEN m.mode = '0' THEN 'minor'
+         WHEN m.mode = '1' THEN 'major' 
+         ELSE NULL END
 FROM msd m
 LEFT JOIN ascap a
 	ON a.Title = m.title
