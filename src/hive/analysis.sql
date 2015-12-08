@@ -16,7 +16,9 @@ CREATE EXTERNAL TABLE merged (
 	tempo STRING,
 	duration STRING,
 	loudness STRING,
-	timeSignature STRING
+	timeSignature STRING,
+	energy STRING,
+	mode STRING
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 STORED AS TEXTFILE
@@ -38,6 +40,8 @@ SELECT
 	CASE WHEN m.duration = '' OR m.duration = 'NA' THEN NULL ELSE m.duration END,
 	CASE WHEN m.loudness = '' OR m.loudness = 'NA' THEN NULL ELSE m.loudness END,
 	CASE WHEN m.time_signature = '' OR m.time_signature = 'NA' THEN NULL ELSE m.time_signature END
+	CASE WHEN m.energy = '' OR m.energy = 'NA' THEN NULL ELSE m.energy END
+	CASE WHEN m.mode = '' OR m.mode = 'NA' THEN NULL ELSE m.mode END
 FROM msd m
 LEFT JOIN ascap a
 	ON a.Title = m.title

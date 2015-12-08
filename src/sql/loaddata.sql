@@ -9,7 +9,7 @@ FIELDS
 (@artist, @title, @writer, @songYear, @peakPosition, 
  @billboardYear, @artistHotttness, @songHotttness,
  @danceability, @songKey, @tempo, @duration, @loudness,
- @timeSignature)
+ @timeSignature, @energy, @mode)
 SET
   artist = nullif(@artist, ''),
   title = nullif(@title, ''),
@@ -24,5 +24,7 @@ SET
   tempo = nullif(@tempo, ''),
   duration = nullif(@duration, ''),
   loudness = nullif(@loudness, ''),
-  timeSignature = nullif(@timeSignature, '')
+  timeSignature = nullif(@timeSignature, ''),
+  energy = nullif(@energy, ''),
+  mode = nullif(@mode, '')
 ;

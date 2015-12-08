@@ -57,7 +57,7 @@ CREATE EXTERNAL TABLE msd (
 	loudness STRING,
 	idx_artist_mbtags STRING
 )
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+STORED AS TEXTFILE
 LOCATION 's3://w205-mmm/million_song_dataset'
 tblproperties ("skip.header.line.count"="1");
