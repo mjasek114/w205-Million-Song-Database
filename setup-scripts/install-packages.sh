@@ -15,6 +15,10 @@ yum -y install xauth*  #enables ssh-based X11 forwarding for gui apps
 yum -y install java-1.7.0-openjdk java-1.7.0-openjdk-devel #necessary for getting hive stuff to start:
 service mysqld start
 
+# Rstudio stuff and shiny stuff won't work under
+# the metamusic user w/o access to /tmp
+chmod 777 /tmp
+
 # AWS CLI Tools
 pip install awscli
 
@@ -48,3 +52,5 @@ R -e "library(shiny)"
 wget https://download3.rstudio.org/centos5.9/x86_64/shiny-server-1.4.0.718-rh5-x86_64.rpm
 yum install -y --nogpgcheck shiny-server-1.4.0.718-rh5-x86_64.rpm
 mv /srv/shiny-server/index.html /srv/shiny-server/index.html~
+
+
