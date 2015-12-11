@@ -15,7 +15,7 @@ SET
   title = nullif(@title, ''),
   writer = nullif(@writer, ''),
   songYear = nullif(@songYear, ''),
-  peakPosition = nullif(@peakPosition, ''),
+  peakPosition = nullif(nullif(@peakPosition, ''), '0'),
   billboardYear = nullif(@billboardYear, ''),
   artistHotttness = nullif(@artistHotttness, ''),
   songHotttness = nullif(@songHotttness, ''),

@@ -28,7 +28,7 @@ SELECT
 	CASE WHEN m.title = '' OR m.title = 'NA' THEN NULL ELSE m.title END,
 	CASE WHEN a.Name = '' OR a.Name = 'NA' THEN NULL ELSE a.Name END AS writer,
 	CASE WHEN m.year = '' OR m.year = 'NA' OR m.year = '0' THEN NULL ELSE m.year END,
-	CASE WHEN b.Peak = '' OR b.Peak = 'NA' THEN NULL ELSE b.Peak END,
+	CASE WHEN b.Peak = '' OR b.Peak = 'NA' OR b.Peak = '0' THEN NULL ELSE b.Peak END,
 	CASE WHEN b.Year = '' OR b.Year = 'NA' OR b.year = '0' THEN NULL ELSE b.Year END AS billboardYear,
 	CASE WHEN m.artist_hotttnesss = '' OR m.artist_hotttnesss = 'NA' OR m.artist_hotttnesss = '0' THEN NULL ELSE m.artist_hotttnesss END,
 	CASE WHEN m.song_hotttnesss = '' OR m.song_hotttnesss = 'NA' OR m.song_hotttnesss = '0' THEN NULL ELSE m.song_hotttnesss END,
