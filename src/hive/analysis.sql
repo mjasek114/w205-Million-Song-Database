@@ -11,13 +11,11 @@ CREATE EXTERNAL TABLE merged (
 	billboardYear STRING,
 	artistHotttness STRING,
 	songHotttness STRING,
-	danceability STRING,
 	key STRING,
 	tempo STRING,
 	duration STRING,
 	loudness STRING,
 	timeSignature STRING,
-	energy STRING,
 	mode STRING
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
@@ -34,13 +32,11 @@ SELECT
 	CASE WHEN b.Year = '' OR b.Year = 'NA' OR b.year = '0' THEN NULL ELSE b.Year END AS billboardYear,
 	CASE WHEN m.artist_hotttnesss = '' OR m.artist_hotttnesss = 'NA' OR m.artist_hotttnesss = '0' THEN NULL ELSE m.artist_hotttnesss END,
 	CASE WHEN m.song_hotttnesss = '' OR m.song_hotttnesss = 'NA' OR m.song_hotttnesss = '0' THEN NULL ELSE m.song_hotttnesss END,
-	CASE WHEN m.danceability = '' OR m.danceability = 'NA' OR m.danceability = '0' THEN NULL ELSE m.danceability END,
 	CASE WHEN k.Name = '' OR k.Name = 'NA' THEN NULL ELSE k.Name END AS key,
 	CASE WHEN m.tempo = '' OR m.tempo = 'NA' OR m.tempo = '0' THEN NULL ELSE m.tempo END,
 	CASE WHEN m.duration = '' OR m.duration = 'NA' OR m.duration = '0' THEN NULL ELSE m.duration END,
 	CASE WHEN m.loudness = '' OR m.loudness = 'NA' OR m.loudness = '0' THEN NULL ELSE m.loudness END,
 	CASE WHEN m.time_signature = '' OR m.time_signature = 'NA' OR m.time_signature = '0' THEN NULL ELSE m.time_signature END,
-	CASE WHEN m.energy = '' OR m.energy = 'NA' OR m.energy = '0' THEN NULL ELSE m.energy END,
 	CASE WHEN m.mode = '0' THEN 'minor'
          WHEN m.mode = '1' THEN 'major' 
          ELSE NULL END

@@ -9,12 +9,10 @@ CREATE TABLE song (
 	billboardYear INT,
 	artistHotttness FLOAT,
 	songHotttness FLOAT,
-	danceability FLOAT,
 	songKey VARCHAR(10),
 	tempo FLOAT,
 	duration FLOAT,
 	loudness FLOAT,
 	timeSignature INT,
-	energy FLOAT,
 	mode VARCHAR(10)
 );

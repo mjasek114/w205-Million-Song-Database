@@ -8,8 +8,8 @@ FIELDS
   ESCAPED BY '\\'
 (@artist, @title, @writer, @songYear, @peakPosition, 
  @billboardYear, @artistHotttness, @songHotttness,
- @danceability, @songKey, @tempo, @duration, @loudness,
- @timeSignature, @energy, @mode)
+ @songKey, @tempo, @duration, @loudness,
+ @timeSignature, @mode)
 SET
   artist = nullif(@artist, ''),
   title = nullif(@title, ''),
@@ -19,12 +19,10 @@ SET
   billboardYear = nullif(@billboardYear, ''),
   artistHotttness = nullif(@artistHotttness, ''),
   songHotttness = nullif(@songHotttness, ''),
-  danceability = nullif(@danceability, ''),
   songKey = nullif(@songKey, ''),
   tempo = nullif(@tempo, ''),
   duration = nullif(@duration, ''),
   loudness = nullif(@loudness, ''),
   timeSignature = nullif(@timeSignature, ''),
-  energy = nullif(@energy, ''),
   mode = nullif(@mode, '')
 ;

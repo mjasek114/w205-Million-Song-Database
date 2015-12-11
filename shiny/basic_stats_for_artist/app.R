@@ -5,7 +5,7 @@ library(RMySQL)
 library(ggplot2)
 
 drv = dbDriver("MySQL")
-db = dbConnect(drv, user="metamusic", password="m00zikz!", dbname="metamusic", host="ec2-52-91-187-124.compute-1.amazonaws.com")
+db = dbConnect(drv, user="metamusic", password="m00zikz!", dbname="metamusic", host="ec2-52-90-221-52.compute-1.amazonaws.com")
 
 
 
@@ -14,7 +14,7 @@ ui <- fluidPage(
    			label="Artist Name:",
    			value="Vanilla Ice"),
    plotOutput("keys"),
-#   plotOutput("danceability"),
+   plotOutput("danceability"),
    plotOutput("tempo"),
    plotOutput("duration"),
    plotOutput("loudness"),
