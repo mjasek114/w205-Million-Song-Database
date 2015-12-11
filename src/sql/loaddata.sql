@@ -26,3 +26,6 @@ SET
   timeSignature = nullif(@timeSignature, ''),
   mode = nullif(@mode, '')
 ;
+
+UPDATE song SET artistHotttness = NULL WHERE artistHotttness = 0;
+UPDATE song SET songHotttness = NULL WHERE songHotttness = 0;
