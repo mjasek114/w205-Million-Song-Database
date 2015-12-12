@@ -1,7 +1,7 @@
 USE metamusic;
 
-CREATE INDEX IX_song_artist_title
+CREATE INDEX IX_song_artist
 ON song (artist);
 
-CREATE INDEX IX_song_writer_title
-ON song(writer);
+CREATE INDEX IX_song_writer
+ON song_writer (writer);
