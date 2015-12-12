@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mkdir /tmp/songs
+mkdir -p /tmp/songs
 aws s3 sync s3://w205-mmm/merged /tmp/songs
 
 cat /tmp/songs/* > /tmp/Song.csv
