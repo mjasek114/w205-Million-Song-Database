@@ -42,9 +42,9 @@ SELECT
          ELSE NULL END
 FROM msd m
 LEFT JOIN ascap_writers a
-	ON a.Title = m.title
+	ON LOWER(a.Title) = LOWER(m.title)
 LEFT JOIN billboard b
-	ON b.Title = m.title
-	AND b.artist = m.artist_name
+	ON LOWER(b.Title) = LOWER(m.title)
+	AND LOWER(b.artist) = LOWER(m.artist_name)
 LEFT JOIN key k
 	ON k.id = m.key;
