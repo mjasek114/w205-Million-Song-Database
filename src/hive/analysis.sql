@@ -41,7 +41,7 @@ SELECT
          WHEN m.mode = '1' THEN 'major' 
          ELSE NULL END
 FROM msd m
-LEFT JOIN ascap a
+LEFT JOIN ascap_writers a
 	ON a.Title = m.title
 LEFT JOIN billboard b
 	ON b.Title = m.title

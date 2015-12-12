@@ -5,8 +5,7 @@ CREATE EXTERNAL TABLE ascap (
 	Shares INT,
 	Note STRING
 	)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 LOCATION 's3://w205-mmm/ascap'
 tblproperties ("skip.header.line.count"="1");
 
