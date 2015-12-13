@@ -17,7 +17,7 @@ Instructions for getting packages set up
 1. Spin up an m3.medium AWS server with the image ami-003f7f6a
 	* Ensure you have the following ports open: 8787, 3838
 2. Login to the server via the command line
-3. Execute the following (replace your values for things in {braces}:
+3. Execute the following (replace your values for things in {braces}):
 
 cd /data
 
@@ -35,9 +35,11 @@ export AWS_DEFAULT_REGION=us-east-1
 
 bash setup-scripts/install-packages.sh # Get some coffee--this takes a while
 
-  * Instructions for creating AWS access keys if you don't already have them http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html
+  * Instructions for creating AWS access keys if you don't already have them 
+http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html
  
   * NOTE: DO NOT STORE THESE IN A FILE ANYWHERE INSIDE THE PROJECT DIRECTORY. If you accidentally check them into GitHub, somebody's likely to find them and use them to rack up a very expensive bill.
 
-
+4. Navigate your browser to {yourInstanceIP}:3838 For the Shiny server
+5. Navigate your browser to {yourInstanceIP}:8787 For RStudio
 
