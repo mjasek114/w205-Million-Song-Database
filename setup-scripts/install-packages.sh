@@ -14,6 +14,7 @@ yum -y install mysql-devel
 yum -y install xauth*  #enables ssh-based X11 forwarding for gui apps
 yum -y install java-1.7.0-openjdk java-1.7.0-openjdk-devel #necessary for getting hive stuff to start:
 service mysqld start
+pip  install boto
 
 # Rstudio stuff and shiny stuff won't work under
 # the metamusic user w/o access to /tmp
@@ -56,6 +57,7 @@ yum install -y --nogpgcheck shiny-server-1.4.0.718-rh5-x86_64.rpm
 mv /srv/shiny-server/index.html /srv/shiny-server/index.html~
 cp -R ./shiny/* /srv/shiny-server/
 
-
+# Load database
+bash /data/w205project/src/sql/prepare-database.sh
 
 
