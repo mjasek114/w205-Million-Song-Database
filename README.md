@@ -10,21 +10,28 @@ Meta Musical Memes workplace
 2. Loading HDF5 data into RDDs: https://hdfgroup.org/wp/2015/03/from-hdf5-datasets-to-apache-spark-rdds/
 3. MSD sample code: https://github.com/tbertinmahieux/MSongsDB
 
-## TODO:
-1. Get up and running with: https://gist.github.com/pbugnion/ea2797393033b54674af
 
 ## Getting Started
 Instructions for getting packages set up
 
-### Mac
+1. Spin up an m3.medium AWS server with the image ami-003f7f6a
+	* Ensure you have the following ports open: 8787, 3838
+2. Login to the server via the command line
+3. Execute the following (replace your values for things in <anglebrackets>:
 
-1. It's easiest to use Anaconda to get all the prerequisites intalled: 
-  * https://www.continuum.io/downloads
-2. Then use it to install the packages listed above:
-  * > conda install h5py
-  * > conda instal boto
-3. Make sure you have your AWS keys stored in the following environment variables:
-  * AWS_ACCESS_KEY_ID - Your AWS Access Key ID
-  * AWS_SECRET_ACCESS_KEY - Your AWS Secret Access Key
-  * Instructions for creating these if you don't already have them http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html 
+cd /data
+git init
+git clone https://<yourGithubUsername>@github.com/SeanU/w205project.git
+cd w205project
+export AWS_ACCESS_KEY_ID=<yourkeyID>
+export AWS_SECRET_ACCESS_KEY=<yourkey>
+export AWS_DEFAULT_REGION=us-east-1
+
+bash setup-scripts/install-packages.sh # Get some coffee--this takes a while
+
+  * Instructions for creating AWS access keys if you don't already have them http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html
+ 
   * NOTE: DO NOT STORE THESE IN A FILE ANYWHERE INSIDE THE PROJECT DIRECTORY. If you accidentally check them into GitHub, somebody's likely to find them and use them to rack up a very expensive bill.
+
+
+
