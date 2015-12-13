@@ -17,14 +17,20 @@ Instructions for getting packages set up
 1. Spin up an m3.medium AWS server with the image ami-003f7f6a
 	* Ensure you have the following ports open: 8787, 3838
 2. Login to the server via the command line
-3. Execute the following (replace your values for things in <anglebrackets>:
+3. Execute the following (replace your values for things in {braces}:
 
 cd /data
+
 git init
-git clone https://<yourGithubUsername>@github.com/SeanU/w205project.git
+
+git clone https://{yourGithubUsername}@github.com/SeanU/w205project.git
+
 cd w205project
-export AWS_ACCESS_KEY_ID=<yourkeyID>
-export AWS_SECRET_ACCESS_KEY=<yourkey>
+
+export AWS_ACCESS_KEY_ID={yourkeyID}
+
+export AWS_SECRET_ACCESS_KEY={yourkey}
+
 export AWS_DEFAULT_REGION=us-east-1
 
 bash setup-scripts/install-packages.sh # Get some coffee--this takes a while
