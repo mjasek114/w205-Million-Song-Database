@@ -5,7 +5,7 @@ library(RMySQL)
 library(ggplot2)
 
 drv = dbDriver("MySQL")
-db = dbConnect(drv, user="metamusic", password="m00zikz!", dbname="metamusic", host="ec2-52-90-221-52.compute-1.amazonaws.com")
+db = dbConnect(drv, user="metamusic", password="m00zikz!", dbname="metamusic", host="localhost")
 
 
 
@@ -14,7 +14,6 @@ ui <- fluidPage(
    			label="Artist Name:",
    			value="Vanilla Ice"),
    plotOutput("keys"),
-   plotOutput("danceability"),
    plotOutput("tempo"),
    plotOutput("duration"),
    plotOutput("loudness"),
@@ -24,7 +23,7 @@ ui <- fluidPage(
 
 server <- function(input, output) {
   data = reactive({
-    query <- paste("SELECT title, songKey, danceability, tempo, duration, loudness, timeSignature FROM song WHERE artist = '", input$artist, "'", sep="")
+    query <- paste("SELECT title, songKey, tempo, duration, loudness, timeSignature FROM song WHERE artist = '", input$artist, "'", sep="")
     rs <- dbSendQuery(db, query)
     fetch(rs, n=-1)
     })
@@ -36,15 +35,6 @@ server <- function(input, output) {
       geom_histogram(aes(y=..count..)) +
       ggtitle("Distribution of song keys")
 		print(p)
-    })
-
-  output$danceability <- renderPlot({
-    if(nrow(data()) == 0) return()
-    
-    p <- ggplot(data=data(), aes(danceability), environment=environment()) +
-      geom_histogram(aes(y=..count..)) +
-      ggtitle("Distribution of song danceability")
-    print(p)
     })
 
   output$tempo <- renderPlot({

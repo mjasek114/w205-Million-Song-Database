@@ -5,7 +5,7 @@ library(RMySQL)
 library(ggplot2)
 
 drv = dbDriver("MySQL")
-db = dbConnect(drv, user="metamusic", password="m00zikz!", dbname="metamusic", host="ec2-52-90-112-33.compute-1.amazonaws.com")
+db = dbConnect(drv, user="metamusic", password="m00zikz!", dbname="metamusic", host="localhost")
 
 fields <- list("songYear", "peakPosition", "billboardYear", 
                "artistHotttness", "songHotttness", "tempo", 
