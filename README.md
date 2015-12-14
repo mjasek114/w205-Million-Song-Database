@@ -33,7 +33,7 @@ export AWS_SECRET_ACCESS_KEY={yourkey}
 
 export AWS_DEFAULT_REGION=us-east-1
 
-bash setup-scripts/install-packages.sh # Get some coffee--this takes a while
+bash setup-scripts/install-packages.sh # Get some coffee--this takes about half an hour
 
   * Instructions for creating AWS access keys if you don't already have them 
 http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html
