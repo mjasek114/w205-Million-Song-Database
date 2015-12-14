@@ -58,6 +58,7 @@ mv /srv/shiny-server/index.html /srv/shiny-server/index.html~
 cp -R ./shiny/* /srv/shiny-server/
 
 # Load database
-bash /data/w205project/src/sql/prepare-database.sh
+cd /data/w205project/src/sql/
+bash ./prepare-database.sh
 
 
