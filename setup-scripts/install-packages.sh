@@ -54,7 +54,8 @@ R -e "library(shiny)"
 # Setup shiny server stuff
 wget https://download3.rstudio.org/centos5.9/x86_64/shiny-server-1.4.0.718-rh5-x86_64.rpm
 yum install -y --nogpgcheck shiny-server-1.4.0.718-rh5-x86_64.rpm
-mv /srv/shiny-server/index.html /srv/shiny-server/index.html~
+rm /srv/shiny-server/index.html
+rm -rf /srv/shiny-server/sample-apps
 cp -R /data/w205project/shiny/* /srv/shiny-server/
 
 # Load database
