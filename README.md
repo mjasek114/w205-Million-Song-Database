@@ -13,6 +13,10 @@ The scope of this project was to create a model of a common big data architectur
 
 The Million Song Dataset (MSD) is a body of data created by LabROSA at Columbia University, and provided to the public via a public Amazon Public Dataset . It primarily consists of the data that The Echo Nest publishes for 1,000,000 songs. This data was processed, cleaned, and joined with Billboard chart data and authorship data from the American Society of Composers, Authors and Publishers (ASCAP), then analyzed in various ways which would be interesting to the general population of music fans as well as music industry professionals.
 
+## Documentation
+1. https://github.com/mjasek114/w205-Million-Song-Database/blob/master/MetaMusicalMemes_FinalPresentation.pdf
+2. https://github.com/mjasek114/w205-Million-Song-Database/blob/master/MetaMusicalMemes_FinalReport.pdf
+
 ## Packages used
 1. h5py: http://www.h5py.org
 2. boto: https://github.com/boto/boto
