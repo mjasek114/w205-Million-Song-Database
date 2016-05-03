@@ -20,7 +20,8 @@ import os.path
 #import sqlalchemy as sql
 import boto
 from boto.s3.key import Key
-    
+
+
 #==============================================================================================================#
 #==============================================================================================================#    
     
@@ -89,9 +90,9 @@ def putS3File(localPath, bucketName):
     k.set_contents_from_filename(localPath, reduced_redundancy=True)
     
     # adds read access for all of us.  all users must be AWS users
-    k.add_email_grant('READ', 'megan@alum.mit.edu')
-    k.add_email_grant('READ', 'seanu@ischool.berkeley.edu')
-    k.add_email_grant('READ', 'james.king@berkeley.edu')
+    k.add_email_grant('FULL_CONTROL', 'megan@alum.mit.edu')
+    k.add_email_grant('FULL_CONTROL', 'seanu@ischool.berkeley.edu')
+    k.add_email_grant('FULL_CONTROL', 'james.king@berkeley.edu')
 
 #==============================================================================================================#
 
@@ -284,7 +285,7 @@ class metaMusic:
         return self.results
     
     #==============================================================================================================#
-    def transformHDF5(self, outCSVFileName = 'MSD_Flat.csv', bucketName = 'w205-msd'):
+    def transformHDF5(self, outCSVFileName = 'MSD_Flat.csv', bucketName = 'MSS/w205-mmm'):
         '''
         Takes results from self.results, flattens them, and ensures that
         all columns are extracted.

@@ -1,0 +1,48 @@
+Using Hive/EMR
+
+1. Go to EMR in the AWS console.  (It's in the Analytics section.)
+
+2. Click "Create Cluster"
+	a. Cluster name can be whatever you want
+
+  	b. Leave logging at the default location. This puts the logs in their own 
+       bucket, so it's easy to clean them up by deleting the bucket after you're 
+       done with the cluster.
+
+  	c. Under Software Configuration, choose the second option, "Core Hadoop".
+       The "All Applications" option makes launching take a long time because
+       it has to install a lot of applications we don't need.
+
+  	d. Leave instance type at m3.xlarge. I spent a while playing with instance 
+       types, and this seems to be the least expensive option that actuall works.
+       (Others may fail to launch with complains about the instance type not 
+       being available in your availability zone.)
+
+  	e. Select yoru ec2 key pair. You'll need this to log in.
+
+  	f. Click "Create Cluster" at the bottom right.
+
+3. Building the cluster will take a while. Hang in there. Once the status goes 
+   to a green "Waiting", you should be good to go.
+
+4. Connect: click the SSH link in the line labeled "Master Public DNS"
+   This gives a SSH command you can copy, just like connecting to an EC2
+   instance. The line isn't quite the same, though - it expects your key
+   pair to be located at the root of your home folder. If that isn't correct
+   then you can replace "~/default.pem" with the correct location.
+
+5. Clone our group repo from github.
+   	a. Install git:  
+   		> sudo yum install git
+   	
+   	b. Clone repo:
+   		> git clone https://[USERNAME]@github.com/SeanU/w205project.git
+
+6. Prepare Hive tables:
+	a. Load the billboard data:
+		> hive -i ~/w205project/src/sql/billboard.sql
+
+	b. Load the MSD data:
+		> hive -i ~/w205project/src/sq/million_song_dataset.sql
+
+
