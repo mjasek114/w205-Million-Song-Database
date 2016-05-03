@@ -1,5 +1,17 @@
-# w205project
-Meta Musical Memes workplace
+# Meta Musical Memes - W205 Fall 2015
+
+## Overview
+For several decade, music fans have been referring to many kinds of pop music particularly the extremely popular songs as “formulaic.” This is usually meant to be a negative term, but it causes those of a certain disposition (Berkeley Data Science students) to wonder if we can actually articulate the “formula” or at least give a corpus of data to songwriters and music producers which helps assess the commercial potential for some work.
+
+## Scope
+The scope of this project was to create a model of a common big data architecture and demonstrate its usefulness by creating a prototype. The general architecture consists of ingesting data, processing it, storing it for analysis and analyzing it. The prototype illustrates the following:
+* Ingest data. Ingest musical data from 3 sources listed below (Python).
+* Load data. Load data to a temporary location for processing (Amazon S3).
+* Transform data. Clean and transform data into a useable format (Hive).
+* Store data for processing. Load merged data into a relational database (MySQL).
+* Process data: Analyze data to accomplish business objective (RStudio Server, Shiny Server).
+
+The Million Song Dataset (MSD) is a body of data created by LabROSA at Columbia University, and provided to the public via a public Amazon Public Dataset . It primarily consists of the data that The Echo Nest publishes for 1,000,000 songs. This data was processed, cleaned, and joined with Billboard chart data and authorship data from the American Society of Composers, Authors and Publishers (ASCAP), then analyzed in various ways which would be interesting to the general population of music fans as well as music industry professionals.
 
 ## Packages used
 1. h5py: http://www.h5py.org
@@ -9,7 +21,6 @@ Meta Musical Memes workplace
 1. Getting the dataset: http://labrosa.ee.columbia.edu/millionsong/pages/getting-dataset
 2. Loading HDF5 data into RDDs: https://hdfgroup.org/wp/2015/03/from-hdf5-datasets-to-apache-spark-rdds/
 3. MSD sample code: https://github.com/tbertinmahieux/MSongsDB
-
 
 ## Getting Started
 Instructions for getting packages set up
